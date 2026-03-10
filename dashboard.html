@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triage Dashboard • AI Emergency Triage Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-dashboard">
+
+    <main class="dashboard-shell">
+        <header class="dashboard-header">
+            <div class="dashboard-title-row">
+                <div>
+                    <h1>Triage Dashboard</h1>
+                    <p>Real-time patient prioritization powered by AI analysis.</p>
+                </div>
+                <a href="triage.html" class="button-link">
+                    <button type="button" class="primary">Add New Patient</button>
+                </a>
+            </div>
+        </header>
+
+        <section class="stats-row">
+            <div class="stat-card">
+                <span class="stat-label">Total Patients</span>
+                <span class="stat-value">12</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Critical Cases</span>
+                <span class="stat-value">2</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Average Waiting Time</span>
+                <span class="stat-value">8 min</span>
+            </div>
+        </section>
+
+        <section class="triage-board">
+            <div class="priority-column priority-critical">
+                <h2 class="priority-title">Critical Patients</h2>
+                <div class="patient-cards">
+                    <div class="patient-card">
+                        <div class="patient-name">John Doe</div>
+                        <div class="patient-symptoms">Chest pain, dizziness</div>
+                        <div class="patient-vitals">HR: 120 | BP: 150/90</div>
+                        <span class="priority-badge critical">Critical</span>
+                    </div>
+                    <div class="patient-card">
+                        <div class="patient-name">Sarah Smith</div>
+                        <div class="patient-symptoms">Severe shortness of breath, cyanosis</div>
+                        <div class="patient-vitals">HR: 145 | BP: 180/110</div>
+                        <span class="priority-badge critical">Critical</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="priority-column priority-high">
+                <h2 class="priority-title">High Priority</h2>
+                <div class="patient-cards">
+                    <div class="patient-card">
+                        <div class="patient-name">Michael Lee</div>
+                        <div class="patient-symptoms">Abdominal pain, vomiting</div>
+                        <div class="patient-vitals">HR: 98 | BP: 140/95</div>
+                        <span class="priority-badge high">High</span>
+                    </div>
+                    <div class="patient-card">
+                        <div class="patient-name">Emma Wilson</div>
+                        <div class="patient-symptoms">Head injury, confusion</div>
+                        <div class="patient-vitals">HR: 88 | BP: 110/70</div>
+                        <span class="priority-badge high">High</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="priority-column priority-medium">
+                <h2 class="priority-title">Medium Priority</h2>
+                <div class="patient-cards">
+                    <div class="patient-card">
+                        <div class="patient-name">David Brown</div>
+                        <div class="patient-symptoms">Fever, sore throat</div>
+                        <div class="patient-vitals">HR: 82 | BP: 125/80</div>
+                        <span class="priority-badge medium">Medium</span>
+                    </div>
+                    <div class="patient-card">
+                        <div class="patient-name">Lisa Chen</div>
+                        <div class="patient-symptoms">Ankle sprain, swelling</div>
+                        <div class="patient-vitals">HR: 76 | BP: 118/75</div>
+                        <span class="priority-badge medium">Medium</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="priority-column priority-low">
+                <h2 class="priority-title">Low Priority</h2>
+                <div class="patient-cards">
+                    <div class="patient-card">
+                        <div class="patient-name">James Taylor</div>
+                        <div class="patient-symptoms">Minor cut, mild bleeding</div>
+                        <div class="patient-vitals">HR: 72 | BP: 120/78</div>
+                        <span class="priority-badge low">Low</span>
+                    </div>
+                    <div class="patient-card">
+                        <div class="patient-name">Anna Martinez</div>
+                        <div class="patient-symptoms">Rash, mild itching</div>
+                        <div class="patient-vitals">HR: 68 | BP: 115/72</div>
+                        <span class="priority-badge low">Low</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard-footer">
+            <a href="index.html" class="button-link">
+                <button type="button" class="secondary">Back to Home</button>
+            </a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
