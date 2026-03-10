@@ -14,11 +14,11 @@ function initTriageForm() {
     const form = document.querySelector('.triage-form');
     if (!form) return;
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const patient = getFormData();
-        const priority = analyzeTriage(patient);
+        const priority = await analyzeTriage(patient);
 
         patient.priority = priority;
         patient.id = Date.now().toString();
@@ -46,55 +46,33 @@ function getFormData() {
 }
 
 /**
- * Simulate AI triage analysis based on symptoms and vital signs.
- * Returns: 'critical' | 'high' | 'medium' | 'low'
+ * AI triage analysis (backend-powered).
+ * Sends patient data to triage-ai.php and returns:
+ * 'critical' | 'high' | 'medium' | 'low'
  */
-function analyzeTriage(patient) {
-    const symptoms = (patient.symptoms || '').toLowerCase();
-    const hr = parseInt(patient.heartRate, 10) || 0;
+async function analyzeTriage(patient) {
+    try {
+        const res = await fetch('triage-ai.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(patient)
+        });
 
-    // Critical: chest pain, heart rate > 120, severe breathing issues
-    if (
-        symptoms.includes('chest pain') ||
-        symptoms.includes('severe shortness of breath') ||
-        symptoms.includes('cyanosis') ||
-        (hr > 120)
-    ) {
-        return 'critical';
+        if (!res.ok) {
+            throw new Error(`AI endpoint failed: ${res.status}`);
+        }
+
+        const data = await res.json();
+        const priority = (data && data.priority ? String(data.priority) : '').trim().toLowerCase();
+
+        if (['critical', 'high', 'medium', 'low'].includes(priority)) {
+            return priority;
+        }
+    } catch (err) {
+        console.error('AI triage error:', err);
     }
 
-    // High: heart rate > 100, head injury, severe pain
-    if (
-        hr > 100 ||
-        symptoms.includes('head injury') ||
-        symptoms.includes('severe pain') ||
-        symptoms.includes('confusion') ||
-        symptoms.includes('abdominal pain')
-    ) {
-        return 'high';
-    }
-
-    // Medium: fever, dizziness
-    if (
-        symptoms.includes('fever') ||
-        symptoms.includes('dizziness') ||
-        symptoms.includes('sore throat') ||
-        symptoms.includes('sprain')
-    ) {
-        return 'medium';
-    }
-
-    // Low: minor injury, rash, cut
-    if (
-        symptoms.includes('minor') ||
-        symptoms.includes('rash') ||
-        symptoms.includes('mild') ||
-        symptoms.includes('cut')
-    ) {
-        return 'low';
-    }
-
-    // Default to medium if no clear match
+    // Safe fallback if AI endpoint is unavailable or returns unexpected output
     return 'medium';
 }
 
