@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Triage Form • AI Emergency Triage Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-triage">
+
+    <main class="triage-shell">
+        <section class="triage-card">
+            <header class="triage-header">
+                <h1>Patient Triage Form</h1>
+                <p>Enter patient symptoms and vital signs for AI-powered triage analysis.</p>
+            </header>
+
+            <form class="triage-form">
+                <section class="form-section">
+                    <h2>Patient Information</h2>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="patient-name">Patient Name</label>
+                            <input type="text" id="patient-name" name="patientName" placeholder="Enter full name">
+                        </div>
+                        <div class="form-field">
+                            <label for="patient-age">Age</label>
+                            <input type="number" id="patient-age" name="age" min="0" placeholder="e.g. 45">
+                        </div>
+                        <div class="form-field">
+                            <label for="patient-gender">Gender</label>
+                            <select id="patient-gender" name="gender">
+                                <option value="">Select gender</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>Symptoms</h2>
+                    <div class="form-field">
+                        <label for="symptoms">Describe Symptoms</label>
+                        <textarea id="symptoms" name="symptoms" rows="4" placeholder="Example: chest pain for 20 minutes, shortness of breath, sweating..."></textarea>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>Vital Signs</h2>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="heart-rate">Heart Rate (bpm)</label>
+                            <input type="number" id="heart-rate" name="heartRate" min="0" placeholder="e.g. 96">
+                        </div>
+                        <div class="form-field">
+                            <label for="blood-pressure">Blood Pressure (mmHg)</label>
+                            <input type="text" id="blood-pressure" name="bloodPressure" placeholder="e.g. 130/85">
+                        </div>
+                        <div class="form-field">
+                            <label for="temperature">Temperature (°C)</label>
+                            <input type="number" id="temperature" name="temperature" step="0.1" placeholder="e.g. 37.8">
+                        </div>
+                        <div class="form-field">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" name="weight" min="0" step="0.1" placeholder="e.g. 72.5">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>Medical History</h2>
+                    <div class="form-field">
+                        <label for="history">Relevant Medical History</label>
+                        <textarea id="history" name="history" rows="4" placeholder="Example: diabetes, hypertension, prior heart attack, current medications..."></textarea>
+                    </div>
+                </section>
+
+                <div class="form-actions">
+                    <button type="submit" class="primary">Analyze with AI</button>
+                    <a href="index.html" class="button-link">
+                        <button type="button" class="secondary">Back to Home</button>
+                    </a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
+
